@@ -113,12 +113,11 @@ function scorerPrompt() {
          selection != 2){
     selection = Number(input.question("You can only enter 0, 1, or 2: "));
   }
-  console.log(scoringAlgorithms[selection]);
   return scoringAlgorithms[selection];
 }
 
 function transform(oldPointStructure) {
-  let newStructure = { ' ': 0 }
+  let newStructure = { }
   for (key in oldPointStructure){
     for (index in oldPointStructure[key]){
       newStructure[oldPointStructure[key][index].toLowerCase()] = Number(key);
