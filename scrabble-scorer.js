@@ -34,9 +34,9 @@ function initialPrompt() {
     console.log("Let's play some scrabble!\n");
     let condition = true;
     let word = input.question("Enter a word to score: ");;
-    while (Number(word)) {
-      word = input.question("You should only enter a word: ");
-    }
+    // while (Number(word)) {
+    //   word = input.question("You should only enter a word: ");
+    // }
     return word;
 };
 
@@ -108,11 +108,11 @@ function scorerPrompt() {
   console.log("1 - Vowel Bonus: Vowels are worth 3 points\n");
   console.log("2 - Scrabble: Uses scrabble point system\n");
   let selection = Number(input.question("Enter 0, 1, or 2: "));
-  while (selection != 0 && 
-         selection != 1 && 
-         selection != 2){
-    selection = Number(input.question("You can only enter 0, 1, or 2: "));
-  }
+  // while (selection != 0 && 
+  //        selection != 1 && 
+  //        selection != 2){
+  //   selection = Number(input.question("You can only enter 0, 1, or 2: "));
+  // }
   return scoringAlgorithms[selection];
 }
 
