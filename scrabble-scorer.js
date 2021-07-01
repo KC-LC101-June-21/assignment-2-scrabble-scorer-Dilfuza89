@@ -84,18 +84,18 @@ function scrabbleScore(word){
 
 const scoringAlgorithms = [ 
       { 
-        name: "Simple Score",
-        description: "Each letter is worth 1 point.",
+        name: 'Simple Score',
+        description: 'Each letter is worth 1 point.',
         scorefunction: simpleScore 
       },
       {
-        name: "Bonus Vowels",
-        description: "Vowels are 3 pts, consonants are 1 pt.",
+        name: 'Bonus Vowels',
+        description: 'Vowels are 3 pts, consonants are 1 pt.',
         scorefunction: vowelBonusScore 
       },
       {
-        name: "Scrabble",
-        description: "The traditional scoring algorithm.",
+        name: 'Scrabble',
+        description: 'The traditional scoring algorithm.',
         scorefunction: scrabbleScore } ];
 
 
@@ -114,7 +114,7 @@ function scorerPrompt() {
 }
 
 function transform(oldPointStructure) {
-  let newStructure = {' ': 0}
+  let newStructure = {}
   for (key in oldPointStructure){
     for (index in oldPointStructure[key]){
       newStructure[oldPointStructure[key][index].toLowerCase()] = Number(key);
