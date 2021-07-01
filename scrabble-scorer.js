@@ -129,7 +129,7 @@ function transform(oldPointStructure) {
 
     for (index in oldPointStructure[key]){
 
-      newStructure[oldPointStructure[key][index]] = Number(key);
+      newStructure[oldPointStructure[key][index].toLowerCase()] = Number(key);
 
     }
   }
