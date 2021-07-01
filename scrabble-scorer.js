@@ -17,15 +17,11 @@ const newPointStructure = transform(oldPointStructure);
 function oldScrabbleScorer(word) {
 	word = word.toUpperCase();
 	let letterPoints = "";
- 
 	for (let i = 0; i < word.length; i++) {
-
 	  for (const pointValue in oldPointStructure) {
- 
 		 if (oldPointStructure[pointValue].includes(word[i])) {
 			letterPoints += `Points for '${word[i]}': ${pointValue}\n`
 		 }
- 
 	  }
 	}
 	return letterPoints;
@@ -41,7 +37,7 @@ function initialPrompt() {
     while (Number(word)) {
       word = input.question("You should only enter a word: ");
     }
-    return word;
+    return word.toLowerCase();
 };
 
 function simpleScore(word) {
@@ -59,15 +55,15 @@ function simpleScore(word) {
 
 function vowelBonusScore(word) { 
   let vowels = ['a','e','i','o','u'];
+  let consonants = ['b','c','d','f','g','h','j','k','l','m',
+                    'n','p','q','r','s','t','v','w','x','y',
+                    'z'];
   let score = 0;
-  for (let i = 0; i < word.length; i++) 
-  {
-    if (vowels.includes(word[i].toLowerCase()))
-    {
+  for (let i = 0; i < word.length; i++) {
+    if (vowels.includes(word[i])){
       score += 3;
     }
-    else
-    {
+    else if (consonants.includes(word[i])){
       score += 1;
     }
   }
@@ -75,17 +71,11 @@ function vowelBonusScore(word) {
 };
 
 function scrabbleScore(word){
-  word = word.toLowerCase();
 	let score = 0;
- 
 	for (let i = 0; i < word.length; i++) {
-
 	  for (const pointValue in newPointStructure) {
-
 		 if (pointValue == word[i]) {
-
 			score += newPointStructure[pointValue];
-
 		 } 
 	  }
 	}
@@ -126,11 +116,8 @@ function scorerPrompt() {
 function transform(oldPointStructure) {
   let newStructure = {' ': 0}
   for (key in oldPointStructure){
-
     for (index in oldPointStructure[key]){
-
       newStructure[oldPointStructure[key][index].toLowerCase()] = Number(key);
-
     }
   }
   return newStructure;
