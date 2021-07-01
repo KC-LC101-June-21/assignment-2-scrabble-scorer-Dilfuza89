@@ -92,24 +92,21 @@ function scrabbleScore(word){
 	return score;
 };
 
-let simpleScoreObject = { 
+const scoringAlgorithms = [ 
+      { 
         name: "Simple Score",
         description: "Each letter is worth 1 point.",
-        scorefunction: simpleScore };
-
-let vowelBonusScoreObject = {
+        scorefunction: simpleScore 
+      },
+      {
         name: "Bonus Vowels",
         description: "Vowels are 3 pts, consonants are 1 pt.",
-        scorefunction: vowelBonusScore };
-
-let oldScrabbleScorerObject = {
+        scorefunction: vowelBonusScore 
+      },
+      {
         name: "Scrabble",
         description: "The traditional scoring algorithm.",
-        scorefunction: scrabbleScore };
-
-const scoringAlgorithms = [ simpleScoreObject,
-                            vowelBonusScoreObject,
-                            oldScrabbleScorerObject ];
+        scorefunction: scrabbleScore } ];
 
 
 function scorerPrompt() {
