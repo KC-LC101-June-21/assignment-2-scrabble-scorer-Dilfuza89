@@ -34,9 +34,9 @@ function initialPrompt() {
     console.log("Let's play some scrabble!\n");
     let condition = true;
     let word = input.question("Enter a word to score: ");;
-    // while (Number(word)) {
-    //   word = input.question("You should only enter a word: ");
-    // }
+    while (Number(word)) {
+      word = input.question("You should only enter a word: ");
+    }
     return word;
 };
 
@@ -89,17 +89,17 @@ const scoringAlgorithms = [
       { 
         name: 'Simple Score',
         description: 'Each letter is worth 1 point.',
-        scorefunction: simpleScore 
+        scoringFunction: simpleScore
       },
       {
         name: 'Bonus Vowels',
         description: 'Vowels are 3 pts, consonants are 1 pt.',
-        scorefunction: vowelBonusScore 
+        scoringFunction: vowelBonusScore 
       },
       {
         name: 'Scrabble',
         description: 'The traditional scoring algorithm.',
-        scorefunction: scrabbleScore } ];
+        scoringFunction: scrabbleScore } ];
 
 
 function scorerPrompt() {
@@ -108,11 +108,12 @@ function scorerPrompt() {
   console.log("1 - Vowel Bonus: Vowels are worth 3 points\n");
   console.log("2 - Scrabble: Uses scrabble point system\n");
   let selection = Number(input.question("Enter 0, 1, or 2: "));
-  // while (selection != 0 && 
-  //        selection != 1 && 
-  //        selection != 2){
-  //   selection = Number(input.question("You can only enter 0, 1, or 2: "));
-  // }
+  while (selection != 0 && 
+         selection != 1 && 
+         selection != 2){
+    selection = Number(input.question("You can only enter 0, 1, or 2: "));
+  }
+  console.log(scoringAlgorithms[selection]);
   return scoringAlgorithms[selection];
 }
 
@@ -129,7 +130,7 @@ function transform(oldPointStructure) {
 function runProgram() {
   let word = initialPrompt();
   let algorithmToUse = scorerPrompt();
-  let score = algorithmToUse.scorefunction(word);
+  let score = algorithmToUse.scoringFunction(word);
   console.log(`Score for '${word}': ${score}`);
 }
 
